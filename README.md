@@ -1,3 +1,12 @@
+# Audio Equalizer
+
+A standalone JUCE app with independent left and right channel levels. Both sliders start at 100% (unity gain). Set a channel to 0% to mute it, or double-click its slider to return to 100%. In mono, the left slider controls the signal. Gain changes use a 10 ms ramp.
+
+Build the `lab8_Standalone` CMake target to run the app. The resulting executable is named `AUDIO EQUALIZER`.
+
+<details>
+<summary>Original Pamplejuce template documentation</summary>
+
 ![PAMPLEJUCE](assets/images/pamplejuce.png)
 [![](https://github.com/sudara/pamplejuce/workflows/Pamplejuce/badge.svg)](https://github.com/sudara/pamplejuce/actions)
 
@@ -263,3 +272,5 @@ If something isn't just working out of the box — *it's not just you* — other
 * [Surge's pkgbuild installer script](https://github.com/kurasu/surge/blob/master/installer_mac/make_installer.sh)
 * [Chris Randall's PackageBuilder script](https://forum.juce.com/t/vst-installer/16654/15)
 * [David Cramer's GA Workflow for signing and notarizing](https://medium.com/better-programming/indie-mac-app-devops-with-github-actions-b16764a3ebe7) and his [notarize-cli tool](https://github.com/bacongravy/notarize-cli)
+
+</details>

@@ -2,11 +2,7 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 
-#if (MSVC)
-#include "ipps.h"
-#endif
-
-extern "C" int add_3(int a, int b, int c);
+#include <array>
 
 class PluginProcessor : public juce::AudioProcessor
 {
@@ -40,6 +36,14 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState parameters;
+
 private:
+    std::array<std::atomic<float>*, 2> gainTargets {
+        parameters.getRawParameterValue ("leftGain"),
+        parameters.getRawParameterValue ("rightGain")
+    };
+    std::array<juce::SmoothedValue<float>, 2> gains;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginProcessor)
 };

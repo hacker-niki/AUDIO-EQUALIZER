@@ -1,29 +1,19 @@
 #include "PluginEditor.h"
 
 PluginEditor::PluginEditor (PluginProcessor& p)
-    : AudioProcessorEditor (&p), processorRef (p)
+    : AudioProcessorEditor (&p),
+      leftAttachment (p.parameters, "leftGain", left),
+      rightAttachment (p.parameters, "rightGain", right)
 {
-    juce::ignoreUnused (processorRef);
-
     addAndMakeVisible(right);
     addAndMakeVisible(left);
     addAndMakeVisible(left_label);
     addAndMakeVisible(right_label);
 
-    right.setNumDecimalPlacesToDisplay(0);
-    right.setRange(0, 100);
-    right.setValue(50);
-
-
-    right.onValueChange = [&](){};
-
-
-    left.setNumDecimalPlacesToDisplay(0);
-    left.setRange(0, 100);
-    left.setValue(50);
-
-
-    left.onValueChange = [&](){};
+    left.setName ("Left channel");
+    right.setName ("Right channel");
+    left.setTextValueSuffix (" %");
+    right.setTextValueSuffix (" %");
 
     right_label.setText("RIGHT channel", juce::dontSendNotification);
     left_label.setText("LEFT channel", juce::dontSendNotification);

@@ -6,7 +6,7 @@ include (PamplejuceVersion)
 
 set(PROJECT_NAME "lab8")
 
-set(PRODUCT_NAME "ADUIO EQUALIZER")
+set(PRODUCT_NAME "AUDIO EQUALIZER")
 
 set(COMPANY_NAME "PASECHNIK INC")
 
@@ -49,9 +49,8 @@ juce_add_plugin("${PROJECT_NAME}"
 add_library(SharedCode INTERFACE)
 
 target_compile_features(SharedCode INTERFACE cxx_std_20)
-enable_language(C ASM_MASM)
 
-set(SourceFiles Source/PluginEditor.h Source/PluginProcessor.h Source/PluginEditor.cpp Source/PluginProcessor.cpp Source/test.asm)
+set(SourceFiles source/PluginEditor.h source/PluginProcessor.h source/PluginEditor.cpp source/PluginProcessor.cpp)
 #file(GLOB_RECURSE SourceFiles CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/source/*.h")
 target_sources(SharedCode INTERFACE ${SourceFiles})
 
